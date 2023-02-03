@@ -1,0 +1,38 @@
+#include<stdio.h>
+void segrate(int *a,int n)
+{
+    int left=0,right=n-1;
+    while(left<right)
+    {
+        while(a[left]%2==0&&left<right)
+        left++;
+        while(a[right]%2!=0&&left<right)
+        right--;
+        if(left<right)
+        {
+            swap(&a[left],&a[right]);
+            left++;
+            right--;
+        }
+    }
+    //for(int i=0;i<n;i++)
+    //printf("%d",a[i]);
+}
+    void swap(int *a,int *b)
+    {
+        int temp=*a;
+        *a=*b;
+        *b=temp;
+        //return;
+    }
+int main()
+{
+    int n,i;
+    scanf("%d",&n);
+    int a[n];
+    for(i=0;i<n;i++)
+    scanf("%d",&a[i]);
+    segrate(a,n);
+    for(int i=0;i<n;i++)
+    printf("%d",a[i]);
+}
